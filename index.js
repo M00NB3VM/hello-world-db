@@ -7,24 +7,16 @@ app.get("/", (req, res) => {
   res.send(process.env.GREETING);
 });
 
-app.get("/add/:name", (req, res) => {
-  // Ersätt person med den skapade personen från databasen
-  const color = {
-    id: 0,
-    name: "Purple",
-  };
+app.get("/add/:name", async (req, res) => {
+  const color = await knex("colors").insert({
+    name: req.params.name,
+  });
 
-  res.send(person);
+  res.send(color);
 });
 
-app.get("/list", (req, res) => {
-  // Ersätt people med alla personer från databasen
-  const colors = [
-    {
-      id: 0,
-      name: "Purple",
-    },
-  ];
+app.get("/list", async (req, res) => {
+  const colors = await knex("colors").select();
 
   res.send(colors);
 });
