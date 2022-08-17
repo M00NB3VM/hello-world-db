@@ -12,7 +12,8 @@ app.get("/add/:name", async (req, res) => {
     name: req.params.name,
   });
 
-  res.send(color);
+  const colors = await knex("colors").select();
+  res.send(colors);
 });
 
 app.get("/list", async (req, res) => {
