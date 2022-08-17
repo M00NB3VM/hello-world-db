@@ -9,9 +9,9 @@ app.get("/", (req, res) => {
 
 app.get("/add/:name", (req, res) => {
   // Ersätt person med den skapade personen från databasen
-  const person = {
+  const color = {
     id: 0,
-    name: "Ryan",
+    name: "Purple",
   };
 
   res.send(person);
@@ -19,14 +19,14 @@ app.get("/add/:name", (req, res) => {
 
 app.get("/list", (req, res) => {
   // Ersätt people med alla personer från databasen
-  const people = [
+  const colors = [
     {
       id: 0,
-      name: "Ryan",
+      name: "Purple",
     },
   ];
 
-  res.send(people);
+  res.send(colors);
 });
 
 app.listen(process.env.PORT, () => {
